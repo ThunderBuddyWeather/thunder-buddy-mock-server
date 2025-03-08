@@ -115,56 +115,21 @@ runs:
           # Health check
           echo "Verifying deployment..."
           
-          # Wait a bit longer for the service to be ready
+          # Wait for the service to be ready
           sleep 20
           
           # Check if the container is running
           docker ps | grep thunder-buddy-wiremock || { echo "Container not running"; exit 1; }
           
-          # Check container logs for successful startup message
-          echo "Checking container logs for startup success..."
-          if docker logs thunder-buddy-wiremock 2>&1 | grep -q "Started JsonMockServiceApplication"; then
-            echo "WireMock container logs indicate successful startup!"
+          # Simple health check - check for API key error message
+          echo "Checking error response from base URL..."
+          if curl -s --connect-timeout 10 http://localhost:8080/ | grep -q "API key is required"; then
+            echo "Deployment successful! Mock server returned the expected error message."
             exit 0
+          else
+            echo "Error: Deployment verification failed - couldn't get expected API key error response"
+            docker compose logs
+            exit 1
           fi
-          
-          # Try network connectivity check using different methods
-          echo "Checking service availability..."
-          
-          # Method 1: Check port using netcat or telnet if available
-          if command -v nc >/dev/null 2>&1; then
-            echo "Using netcat to check port 8080"
-            if nc -z localhost 8080; then
-              echo "Port 8080 is open, service appears to be running!"
-              exit 0
-            fi
-          elif command -v telnet >/dev/null 2>&1; then
-            echo "Using telnet to check port 8080"
-            if echo "quit" | telnet localhost 8080 2>/dev/null | grep "Connected to" >/dev/null; then
-              echo "Port 8080 is open, service appears to be running!"
-              exit 0
-            fi
-          fi
-          
-          # Method 2: Check using curl if available
-          if command -v curl >/dev/null 2>&1; then
-            echo "Using curl to check service"
-            if curl -s --connect-timeout 10 http://localhost:8080/ >/dev/null; then
-              echo "Deployment successful! Mock server is responding."
-              exit 0
-            fi
-            
-            # Try another simple check without any parameters
-            echo "Checking error response from base URL..."
-            if curl -s --connect-timeout 10 http://localhost:8080/ | grep -q "API key is required"; then
-              echo "Deployment successful! Mock server returned the expected error message."
-              exit 0
-            fi
-          fi
-          
-          # If we get here, all verification methods failed
-          echo "Error: Deployment verification failed - couldn't connect to the service"
-          docker compose logs
-          exit 1
           
           echo "Deployment completed successfully!" 
