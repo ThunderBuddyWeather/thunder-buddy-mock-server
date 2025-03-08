@@ -153,6 +153,13 @@ runs:
               echo "Deployment successful! Mock server is responding."
               exit 0
             fi
+            
+            # Try another simple check without any parameters
+            echo "Checking error response from base URL..."
+            if curl -s --connect-timeout 10 http://localhost:8080/ | grep -q "API key is required"; then
+              echo "Deployment successful! Mock server returned the expected error message."
+              exit 0
+            fi
           fi
           
           # If we get here, all verification methods failed
