@@ -114,7 +114,32 @@ runs:
           
           # Health check
           echo "Verifying deployment..."
-          HEALTH_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/alerts?lat=38.9072&lon=-77.0369&key=any_key)
+          
+          # Check if the container is running
+          docker ps | grep thunder-buddy-wiremock || { echo "Container not running"; exit 1; }
+          
+          # Try to use curl inside the container (may not be installed)
+          if docker exec thunder-buddy-wiremock which curl &>/dev/null; then
+            echo "Using curl inside the container"
+            HEALTH_CHECK=$(docker exec thunder-buddy-wiremock curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/alerts?lat=38.9072&lon=-77.0369&key=any_key)
+          else
+            echo "Curl not found in container, trying to install it"
+            if docker exec thunder-buddy-wiremock bash -c "apt-get update && apt-get install -y curl" &>/dev/null; then
+              echo "Curl installed successfully"
+              HEALTH_CHECK=$(docker exec thunder-buddy-wiremock curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/alerts?lat=38.9072&lon=-77.0369&key=any_key)
+            else
+              echo "Couldn't install curl, trying alternatives"
+              # Try wget as an alternative
+              if docker exec thunder-buddy-wiremock which wget &>/dev/null; then
+                HEALTH_CHECK=$(docker exec thunder-buddy-wiremock bash -c "wget -q -O /dev/null --server-response http://localhost:8080/alerts?lat=38.9072&lon=-77.0369&key=any_key 2>&1 | awk '/^  HTTP/{print \$2}'")
+              else
+                # If neither curl nor wget is available, try using the host's curl with container IP
+                echo "Using host curl with container IP"
+                CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' thunder-buddy-wiremock)
+                HEALTH_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://${CONTAINER_IP}:8080/alerts?lat=38.9072&lon=-77.0369&key=any_key)
+              fi
+            fi
+          fi
           
           if [ "$HEALTH_CHECK" = "200" ]; then
             echo "Deployment successful! Mock server is responding with status code 200."
