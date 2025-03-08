@@ -1,0 +1,58 @@
+{
+  "alerts": [
+    {
+      "alert_id": "NOAA-NWS-ALERTS-FL12345",
+      "description": "The National Hurricane Center has issued a Hurricane Warning for Miami Beach and surrounding coastal areas. Hurricane Maria is expected to make landfall within the next 36 hours with sustained winds of 120 mph. Mandatory evacuations are in effect for barrier islands and coastal areas. Secure property and relocate to designated shelters or inland areas immediately.",
+      "effective_local": "2023-09-12T06:00:00",
+      "effective_utc": "2023-09-12T10:00:00",
+      "ends_local": "2023-09-14T18:00:00",
+      "ends_utc": "2023-09-14T22:00:00",
+      "expires_local": "2023-09-14T18:00:00",
+      "expires_utc": "2023-09-14T22:00:00",
+      "onset_local": "2023-09-12T06:00:00",
+      "onset_utc": "2023-09-12T10:00:00",
+      "regions": ["Miami Beach", "Miami", "Coral Gables", "Key Biscayne"],
+      "severity": "Extreme",
+      "title": "Hurricane Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=FL12345"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-FL67890",
+      "description": "The National Weather Service in Miami has issued a Storm Surge Warning for coastal areas of Miami-Dade County. Life-threatening storm surge of 8-12 feet above ground level is expected during Hurricane Maria. Evacuate immediately if ordered to do so by local officials.",
+      "effective_local": "2023-09-12T06:00:00",
+      "effective_utc": "2023-09-12T10:00:00",
+      "ends_local": "2023-09-14T18:00:00",
+      "ends_utc": "2023-09-14T22:00:00",
+      "expires_local": "2023-09-14T18:00:00",
+      "expires_utc": "2023-09-14T22:00:00",
+      "onset_local": "2023-09-12T06:00:00",
+      "onset_utc": "2023-09-12T10:00:00",
+      "regions": ["Miami Beach", "Miami", "Coral Gables", "Key Biscayne"],
+      "severity": "Extreme",
+      "title": "Storm Surge Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=FL67890"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-FL24680",
+      "description": "The National Weather Service in Miami has issued a Flood Warning for Miami-Dade County. Heavy rainfall associated with Hurricane Maria is expected to cause significant flooding in urban areas and along small streams and canals. Avoid travel and stay away from flooded areas.",
+      "effective_local": "2023-09-12T08:00:00",
+      "effective_utc": "2023-09-12T12:00:00",
+      "ends_local": "2023-09-15T08:00:00",
+      "ends_utc": "2023-09-15T12:00:00",
+      "expires_local": "2023-09-15T08:00:00",
+      "expires_utc": "2023-09-15T12:00:00",
+      "onset_local": "2023-09-12T08:00:00",
+      "onset_utc": "2023-09-12T12:00:00",
+      "regions": ["Miami-Dade County"],
+      "severity": "Severe",
+      "title": "Flood Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=FL24680"
+    }
+  ],
+  "count": 3,
+  "city_name": "Miami Beach",
+  "state_code": "FL",
+  "timezone": "America/New_York",
+  "lat": "{{request.query.lat}}",
+  "lon": "{{request.query.lon}}"
+}

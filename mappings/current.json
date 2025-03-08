@@ -1,0 +1,41 @@
+{
+  "mappings": [
+    {
+      "name": "Get Current Weather",
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/current",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "jsonBody": {
+          "temp": 72,
+          "feels_like": 74,
+          "temp_min": 68,
+          "temp_max": 76,
+          "pressure": 1012,
+          "humidity": 65,
+          "wind_speed": 8.5,
+          "wind_direction": 270,
+          "description": "Partly cloudy",
+          "icon": "partly-cloudy-day",
+          "precipitation_probability": 10,
+          "observation_time": "2023-03-15T12:30:00Z"
+        },
+        "transformers": ["response-template"]
+      }
+    }
+  ]
+}

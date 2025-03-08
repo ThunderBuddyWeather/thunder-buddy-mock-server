@@ -1,0 +1,89 @@
+{
+  "mappings": [
+    {
+      "name": "Beverly Hills Alert - 90210 with Query Params",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2.0/beverly-hills"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/90210.json",
+        "transformers": ["response-template"]
+      }
+    },
+    {
+      "name": "Oklahoma City Alert - 73102 with Query Params",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2.0/oklahoma-city"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/73102.json",
+        "transformers": ["response-template"]
+      }
+    },
+    {
+      "name": "Miami Beach Alert - 33139 with Query Params",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2.0/miami-beach"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/33139.json",
+        "transformers": ["response-template"]
+      }
+    },
+    {
+      "name": "Burlington Alert - 05401 with Query Params",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2.0/burlington"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/05401.json",
+        "transformers": ["response-template"]
+      }
+    },
+    {
+      "name": "Bend Alert - 97701 with Query Params",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2.0/bend"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/97701.json",
+        "transformers": ["response-template"]
+      }
+    }
+  ]
+}

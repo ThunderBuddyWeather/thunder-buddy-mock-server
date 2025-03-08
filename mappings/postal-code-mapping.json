@@ -1,0 +1,148 @@
+{
+  "mappings": [
+    {
+      "name": "Get Weather Alerts by Postal Code - 90210 (Beverly Hills)",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "equalTo": "90210"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/90210.json"
+      }
+    },
+    {
+      "name": "Get Weather Alerts by Postal Code - 73102 (Oklahoma City)",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "equalTo": "73102"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/73102.json"
+      }
+    },
+    {
+      "name": "Get Weather Alerts by Postal Code - 33139 (Miami Beach)",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "equalTo": "33139"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/33139.json"
+      }
+    },
+    {
+      "name": "Get Weather Alerts by Postal Code - 05401 (Burlington)",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "equalTo": "05401"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/05401.json"
+      }
+    },
+    {
+      "name": "Get Weather Alerts by Postal Code - 97701 (Bend)",
+      "priority": 5,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "equalTo": "97701"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/97701.json"
+      }
+    },
+    {
+      "name": "Get Weather Alerts by Postal Code - Default (No Alerts)",
+      "priority": 10,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "bodyFileName": "zip-alerts/default.json"
+      }
+    }
+  ]
+}

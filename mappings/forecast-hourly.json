@@ -1,0 +1,52 @@
+{
+  "mappings": [
+    {
+      "name": "Get Hourly Forecast",
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/forecast/hourly",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "jsonBody": {
+          "city_name": "{{#assign cityName}}{{#eq request.query.postal_code 90210}}Beverly Hills{{else}}{{#eq request.query.postal_code 73102}}Oklahoma City{{else}}Unknown City{{/eq}}{{/eq}}{{/assign}}{{cityName}}",
+          "country_code": "US",
+          "data": [
+            {
+              "datetime": "2023-09-12:12",
+              "temp": 26.5,
+              "weather": {
+                "icon": "c02d",
+                "code": 801,
+                "description": "Few clouds"
+              }
+            },
+            {
+              "datetime": "2023-09-12:13",
+              "temp": 27.1,
+              "weather": {
+                "icon": "c01d",
+                "code": 800,
+                "description": "Clear sky"
+              }
+            }
+          ],
+          "postal_code": "{{request.query.postal_code}}"
+        },
+        "transformers": ["response-template"]
+      }
+    }
+  ]
+}

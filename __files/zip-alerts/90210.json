@@ -1,0 +1,26 @@
+{
+  "alerts": [
+    {
+      "alert_id": "NOAA-NWS-ALERTS-CA12345",
+      "description": "The National Weather Service in Los Angeles has issued a Flash Flood Warning for Beverly Hills and surrounding areas. Heavy rainfall is causing significant water accumulation on roads and in low-lying areas. Avoid travel in affected areas and move to higher ground if necessary.",
+      "effective_local": "2023-09-12T08:00:00",
+      "effective_utc": "2023-09-12T15:00:00",
+      "ends_local": "2023-09-12T20:00:00",
+      "ends_utc": "2023-09-13T03:00:00",
+      "expires_local": "2023-09-12T20:00:00",
+      "expires_utc": "2023-09-13T03:00:00",
+      "onset_local": "2023-09-12T08:00:00",
+      "onset_utc": "2023-09-12T15:00:00",
+      "regions": ["Beverly Hills", "West Los Angeles", "Santa Monica"],
+      "severity": "Severe",
+      "title": "Flash Flood Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=CA12345"
+    }
+  ],
+  "count": 1,
+  "city_name": "Beverly Hills",
+  "state_code": "CA",
+  "timezone": "America/Los_Angeles",
+  "lat": "{{request.query.lat}}",
+  "lon": "{{request.query.lon}}"
+}

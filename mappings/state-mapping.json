@@ -1,0 +1,33 @@
+{
+  "mappings": [
+    {
+      "name": "Get Weather Alerts by State - California",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/state-alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "state": {
+            "equalTo": "CA"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "jsonBody": {
+          "alerts": [],
+          "count": 0,
+          "state_name": "California",
+          "state_code": "CA"
+        }
+      }
+    }
+  ]
+}

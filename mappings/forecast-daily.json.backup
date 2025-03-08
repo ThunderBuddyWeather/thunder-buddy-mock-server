@@ -1,0 +1,58 @@
+{
+  "mappings": [
+    {
+      "name": "Get Daily Forecast",
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/forecast/daily",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "postal_code": {
+            "matches": ".*"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "jsonBody": {
+          "forecast": [
+            {
+              "date": "2023-03-15",
+              "temp_max": 72,
+              "temp_min": 58,
+              "description": "Partly cloudy",
+              "icon": "partly-cloudy-day",
+              "precipitation_probability": 10
+            },
+            {
+              "date": "2023-03-16",
+              "temp_max": 68,
+              "temp_min": 55,
+              "description": "Scattered showers",
+              "icon": "rain",
+              "precipitation_probability": 40
+            },
+            {
+              "date": "2023-03-17",
+              "temp_max": 65,
+              "temp_min": 53,
+              "description": "Rain",
+              "icon": "rain",
+              "precipitation_probability": 90
+            }
+          ]
+        },
+        "postal_code": "{{request.query.postal_code}}"
+      },
+      "transformers": [
+        "response-template"
+      ]
+    }
+  ]
+}

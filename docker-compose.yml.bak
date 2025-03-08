@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  wiremock:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: thunder-buddy-wiremock
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./mappings:/opt/wiremock/mappings
+      - ./__files:/opt/wiremock/__files
+    environment:
+      - WIREMOCK_OPTIONS=--global-response-templating --verbose
+    restart: unless-stopped

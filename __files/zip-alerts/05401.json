@@ -1,0 +1,42 @@
+{
+  "alerts": [
+    {
+      "alert_id": "NOAA-NWS-ALERTS-VT12345",
+      "description": "The National Weather Service in Burlington has issued a Winter Storm Warning for Burlington and surrounding areas. Heavy snow accumulations of 12-18 inches expected with winds gusting up to 35 mph. Travel will be very difficult to impossible. Prepare for power outages and tree damage.",
+      "effective_local": "2023-09-12T16:00:00",
+      "effective_utc": "2023-09-12T20:00:00",
+      "ends_local": "2023-09-13T22:00:00",
+      "ends_utc": "2023-09-14T02:00:00",
+      "expires_local": "2023-09-13T22:00:00",
+      "expires_utc": "2023-09-14T02:00:00",
+      "onset_local": "2023-09-12T18:00:00",
+      "onset_utc": "2023-09-12T22:00:00",
+      "regions": ["Burlington", "South Burlington", "Colchester", "Essex"],
+      "severity": "Severe",
+      "title": "Winter Storm Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=VT12345"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-VT67890",
+      "description": "The National Weather Service in Burlington has issued a Wind Chill Advisory for Burlington and surrounding areas. Very cold wind chills expected with wind chills as low as -20°F. Frostbite and hypothermia can occur if precautions are not taken. Wear appropriate clothing and limit time outdoors.",
+      "effective_local": "2023-09-12T20:00:00",
+      "effective_utc": "2023-09-13T00:00:00",
+      "ends_local": "2023-09-13T10:00:00",
+      "ends_utc": "2023-09-13T14:00:00",
+      "expires_local": "2023-09-13T10:00:00",
+      "expires_utc": "2023-09-13T14:00:00",
+      "onset_local": "2023-09-12T20:00:00",
+      "onset_utc": "2023-09-13T00:00:00",
+      "regions": ["Chittenden County"],
+      "severity": "Moderate",
+      "title": "Wind Chill Advisory",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=VT67890"
+    }
+  ],
+  "count": 2,
+  "city_name": "Burlington",
+  "state_code": "VT",
+  "timezone": "America/New_York",
+  "lat": "{{request.query.lat}}",
+  "lon": "{{request.query.lon}}"
+}

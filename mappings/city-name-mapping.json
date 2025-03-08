@@ -1,0 +1,33 @@
+{
+  "mappings": [
+    {
+      "name": "Get Weather Alerts by City - Los Angeles",
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/city-alerts",
+        "queryParameters": {
+          "key": {
+            "matches": ".*"
+          },
+          "city_name": {
+            "equalTo": "Los Angeles"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "jsonBody": {
+          "alerts": [],
+          "count": 0,
+          "city_name": "Los Angeles",
+          "state_code": "CA"
+        }
+      }
+    }
+  ]
+}

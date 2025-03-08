@@ -1,0 +1,48 @@
+{
+  "count": 1,
+  "data": [
+    {
+      "app_temp": 18.5,
+      "aqi": 35,
+      "city_name": "Washington",
+      "clouds": 25,
+      "country_code": "US",
+      "datetime": "2023-09-12:15",
+      "dewpt": 15.2,
+      "dhi": 85.7,
+      "dni": 687.9,
+      "elev_angle": 52.1,
+      "ghi": 894.3,
+      "h_angle": -45.2,
+      "lat": "${lat}",
+      "lon": "${lon}",
+      "ob_time": "2023-09-12 15:00",
+      "pod": "d",
+      "precip": 0,
+      "pres": 1012.5,
+      "rh": 68,
+      "slp": 1013.2,
+      "snow": 0,
+      "solar_rad": 850.2,
+      "sources": ["observed", "METARS"],
+      "state_code": "DC",
+      "station": "KDCA",
+      "sunrise": "06:48",
+      "sunset": "19:25",
+      "temp": 22.8,
+      "timezone": "America/New_York",
+      "ts": 1694534400,
+      "uv": 6.2,
+      "vis": 10,
+      "weather": {
+        "icon": "c02d",
+        "code": 801,
+        "description": "Few clouds"
+      },
+      "wind_cdir": "SSW",
+      "wind_cdir_full": "south-southwest",
+      "wind_dir": 200,
+      "wind_spd": 3.6
+    }
+  ]
+}

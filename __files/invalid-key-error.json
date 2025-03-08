@@ -1,0 +1,5 @@
+{
+  "error": true,
+  "code": 401,
+  "message": "Invalid API key. Please provide a valid API key with your request."
+}

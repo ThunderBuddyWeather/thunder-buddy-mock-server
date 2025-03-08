@@ -1,0 +1,42 @@
+{
+  "alerts": [
+    {
+      "alert_id": "NOAA-NWS-ALERTS-OK12345",
+      "description": "The National Weather Service in Oklahoma City has issued a Tornado Warning for downtown Oklahoma City and surrounding areas. Doppler radar has detected rotation in a severe thunderstorm. Take cover immediately in a sturdy structure on the lowest floor away from windows.",
+      "effective_local": "2023-09-12T15:30:00",
+      "effective_utc": "2023-09-12T20:30:00",
+      "ends_local": "2023-09-12T16:15:00",
+      "ends_utc": "2023-09-12T21:15:00",
+      "expires_local": "2023-09-12T16:15:00",
+      "expires_utc": "2023-09-12T21:15:00",
+      "onset_local": "2023-09-12T15:30:00",
+      "onset_utc": "2023-09-12T20:30:00",
+      "regions": ["Oklahoma City", "Moore", "Del City"],
+      "severity": "Extreme",
+      "title": "Tornado Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=OK12345"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-OK67890",
+      "description": "The National Weather Service in Oklahoma City has issued a Severe Thunderstorm Warning for Oklahoma City and surrounding areas. Thunderstorms capable of producing damaging winds, destructive hail, and intense lightning are moving through the area. Seek shelter indoors immediately.",
+      "effective_local": "2023-09-12T15:15:00",
+      "effective_utc": "2023-09-12T20:15:00",
+      "ends_local": "2023-09-12T16:30:00",
+      "ends_utc": "2023-09-12T21:30:00",
+      "expires_local": "2023-09-12T16:30:00",
+      "expires_utc": "2023-09-12T21:30:00",
+      "onset_local": "2023-09-12T15:15:00",
+      "onset_utc": "2023-09-12T20:15:00",
+      "regions": ["Oklahoma City", "Edmond", "Yukon"],
+      "severity": "Severe",
+      "title": "Severe Thunderstorm Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=OK67890"
+    }
+  ],
+  "count": 2,
+  "city_name": "Oklahoma City",
+  "state_code": "OK",
+  "timezone": "America/Chicago",
+  "lat": "{{request.query.lat}}",
+  "lon": "{{request.query.lon}}"
+}

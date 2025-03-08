@@ -1,0 +1,5 @@
+{
+  "error": true,
+  "code": 400,
+  "message": "Invalid parameters. Please check your request parameters and try again."
+}

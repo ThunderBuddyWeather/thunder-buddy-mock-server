@@ -1,0 +1,39 @@
+{
+  "alerts": [
+    {
+      "alert_id": "NOAA-NWS-ALERTS-DC12345",
+      "description": "The National Weather Service in Washington DC has issued a Flash Flood Watch for portions of District of Columbia, including the following areas: Washington and surrounding metro areas. Flash flooding caused by excessive rainfall is possible. Monitor weather forecasts and be prepared to take action.",
+      "effective_local": "2023-09-12T09:00:00",
+      "effective_utc": "2023-09-12T13:00:00",
+      "ends_local": "2023-09-13T00:00:00",
+      "ends_utc": "2023-09-13T04:00:00",
+      "expires_local": "2023-09-13T00:00:00",
+      "expires_utc": "2023-09-13T04:00:00",
+      "onset_local": "2023-09-12T09:00:00",
+      "onset_utc": "2023-09-12T13:00:00",
+      "regions": ["Washington DC"],
+      "severity": "Moderate",
+      "title": "Flash Flood Watch",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=DC12345"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-DC67890",
+      "description": "The National Weather Service in Washington DC has issued a Heat Advisory, which is in effect from 11 AM to 8 PM EDT. Dangerously hot conditions with heat index values up to 105 expected. Extreme heat and humidity will significantly increase the potential for heat related illnesses, particularly for those working or participating in outdoor activities.",
+      "effective_local": "2023-09-12T11:00:00",
+      "effective_utc": "2023-09-12T15:00:00",
+      "ends_local": "2023-09-12T20:00:00",
+      "ends_utc": "2023-09-13T00:00:00",
+      "expires_local": "2023-09-12T20:00:00",
+      "expires_utc": "2023-09-13T00:00:00",
+      "onset_local": "2023-09-12T11:00:00",
+      "onset_utc": "2023-09-12T15:00:00",
+      "regions": ["Washington DC", "Arlington", "Alexandria"],
+      "severity": "Moderate",
+      "title": "Heat Advisory",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=DC67890"
+    }
+  ],
+  "count": 2,
+  "lat": "${lat}",
+  "lon": "${lon}"
+}

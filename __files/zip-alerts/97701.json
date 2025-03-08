@@ -1,0 +1,58 @@
+{
+  "alerts": [
+    {
+      "alert_id": "NOAA-NWS-ALERTS-OR12345",
+      "description": "The National Weather Service in Pendleton has issued a Red Flag Warning for Bend and surrounding areas due to critical fire weather conditions. Strong winds up to 45 mph, low humidity of 10-15%, and dry fuels will create extreme fire danger. Any fires that develop will likely spread rapidly and be difficult to control.",
+      "effective_local": "2023-09-12T10:00:00",
+      "effective_utc": "2023-09-12T17:00:00",
+      "ends_local": "2023-09-13T20:00:00",
+      "ends_utc": "2023-09-14T03:00:00",
+      "expires_local": "2023-09-13T20:00:00",
+      "expires_utc": "2023-09-14T03:00:00",
+      "onset_local": "2023-09-12T10:00:00",
+      "onset_utc": "2023-09-12T17:00:00",
+      "regions": ["Deschutes County", "Bend", "Redmond", "Sisters"],
+      "severity": "Severe",
+      "title": "Red Flag Warning",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=OR12345"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-OR67890",
+      "description": "The Oregon Department of Forestry has issued an Evacuation Order (Level 3 - GO NOW) for areas east of Bend due to the Cascade Fire. The fire has grown to 5,000 acres with 0% containment. Leave immediately and follow evacuation routes. For specific evacuation zone information, contact local emergency management.",
+      "effective_local": "2023-09-12T14:00:00",
+      "effective_utc": "2023-09-12T21:00:00",
+      "ends_local": "2023-09-15T14:00:00",
+      "ends_utc": "2023-09-15T21:00:00",
+      "expires_local": "2023-09-15T14:00:00",
+      "expires_utc": "2023-09-15T21:00:00",
+      "onset_local": "2023-09-12T14:00:00",
+      "onset_utc": "2023-09-12T21:00:00",
+      "regions": ["East Bend", "Alfalfa", "Brasada Ranch"],
+      "severity": "Extreme",
+      "title": "Evacuation Order - Wildfire",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=OR67890"
+    },
+    {
+      "alert_id": "NOAA-NWS-ALERTS-OR24680",
+      "description": "The Deschutes County Health Department has issued an Air Quality Alert for Bend and surrounding areas due to smoke from the Cascade Fire. Air quality has reached UNHEALTHY FOR SENSITIVE GROUPS to UNHEALTHY levels. People with respiratory or heart disease, the elderly, and children should limit prolonged outdoor exertion.",
+      "effective_local": "2023-09-12T08:00:00",
+      "effective_utc": "2023-09-12T15:00:00",
+      "ends_local": "2023-09-14T08:00:00",
+      "ends_utc": "2023-09-14T15:00:00",
+      "expires_local": "2023-09-14T08:00:00",
+      "expires_utc": "2023-09-14T15:00:00",
+      "onset_local": "2023-09-12T08:00:00",
+      "onset_utc": "2023-09-12T15:00:00",
+      "regions": ["Deschutes County"],
+      "severity": "Moderate",
+      "title": "Air Quality Alert",
+      "uri": "https://alerts.weather.gov/cap/wwacapget.php?x=OR24680"
+    }
+  ],
+  "count": 3,
+  "city_name": "Bend",
+  "state_code": "OR",
+  "timezone": "America/Los_Angeles",
+  "lat": "{{request.query.lat}}",
+  "lon": "{{request.query.lon}}"
+}

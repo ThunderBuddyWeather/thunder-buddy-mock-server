@@ -1,0 +1,30 @@
+{
+  "mappings": [
+    {
+      "name": "Get Weather Alerts - Lowest Priority Fallback",
+      "priority": 100,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/alerts"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        "jsonBody": {
+          "alerts": [
+            {
+              "alert_id": "60d1f69b-4187-43d0-9ddb-c9d5d43a4e27",
+              "description": "Flash Flood Warning for Beverly Hills, CA until 5:00 PM PDT. This is a particularly dangerous situation. Seek higher ground immediately!",
+              "severity": "severe",
+              "time": "2023-03-15T10:30:00Z"
+            }
+          ],
+          "count": 1
+        }
+      }
+    }
+  ]
+}
