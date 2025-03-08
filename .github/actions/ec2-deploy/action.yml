@@ -1,0 +1,127 @@
+---
+name: "Deploy Mock Server to EC2"
+description: "Deploys WireMock server to EC2 instance using Docker Compose"
+
+inputs:
+  host:
+    required: true
+    description: "EC2 host address"
+  username:
+    required: true
+    description: "SSH username"
+  key:
+    required: true
+    description: "SSH private key"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Validate inputs
+      shell: bash
+      run: |
+        # Validate and log input values
+        echo "Validating deployment inputs..."
+
+        # Validate SSH inputs
+        if [ -z "${{ inputs.host }}" ]; then
+          echo "Error: SSH host is empty"
+          exit 1
+        fi
+        echo "SSH host is set"
+
+        if [ -z "${{ inputs.username }}" ]; then
+          echo "Error: SSH username is empty"
+          exit 1
+        fi
+        echo "SSH username is set"
+
+        if [ -z "${{ inputs.key }}" ]; then
+          echo "Error: SSH key is empty"
+          exit 1
+        fi
+        echo "SSH key is set"
+
+        echo "All required inputs validated successfully"
+
+    - name: Setup SSH
+      shell: bash
+      run: |
+        # Create SSH directory
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+
+        # Write the private key to a file
+        echo "${{ inputs.key }}" > ~/.ssh/ec2_key
+        chmod 600 ~/.ssh/ec2_key
+
+        # Add host key to known hosts to prevent verification prompt
+        ssh-keyscan -H ${{ inputs.host }} >> ~/.ssh/known_hosts
+
+    - name: Copy files to EC2
+      shell: bash
+      run: |
+        # Create a temporary directory for deployment files
+        mkdir -p ~/deploy-temp
+
+        # Copy necessary files
+        cp docker-compose.yml ~/deploy-temp/
+        cp -r mappings/ ~/deploy-temp/
+        cp -r __files/ ~/deploy-temp/
+        cp -r docker/ ~/deploy-temp/ 2>/dev/null || true
+        cp Dockerfile ~/deploy-temp/ 2>/dev/null || true
+        cp weatherbit-swagger.json ~/deploy-temp/ 2>/dev/null || true
+
+        # Find and copy any other config files that might be needed
+        find . -maxdepth 1 -name "*.json" -o -name "*.yml" -o -name "*.yaml" | xargs -I{} cp {} ~/deploy-temp/ 2>/dev/null || true
+
+        echo "Files prepared for deployment:"
+        ls -la ~/deploy-temp/
+
+        # Create destination directory on EC2
+        ssh -i ~/.ssh/ec2_key ${{ inputs.username }}@${{ inputs.host }} "mkdir -p ~/thunder-buddy-mock-server"
+
+        # Copy all files to EC2
+        scp -i ~/.ssh/ec2_key -r ~/deploy-temp/* ${{ inputs.username }}@${{ inputs.host }}:~/thunder-buddy-mock-server/
+
+        echo "All deployment files copied to EC2"
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ${{ inputs.host }}
+        username: ${{ inputs.username }}
+        key: ${{ inputs.key }}
+        script_stop: true
+        script: |
+          echo "Starting remote deployment process..."
+
+          echo "Cleaning up disk space..."
+          # Remove unused containers and images, but keep volumes
+          docker system prune -af --volumes=false
+          
+          echo "Navigating to thunder-buddy-mock-server directory..."
+          cd ~/thunder-buddy-mock-server
+
+          echo "Stopping existing containers (if any)..."
+          docker compose down --remove-orphans || true
+          docker rm -f thunder-buddy-wiremock || true
+
+          echo "Building and starting containers..."
+          docker compose up -d
+
+          echo "Waiting for container to be healthy..."
+          sleep 10
+          
+          # Health check
+          echo "Verifying deployment..."
+          HEALTH_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/alerts?lat=38.9072&lon=-77.0369&key=any_key)
+          
+          if [ "$HEALTH_CHECK" = "200" ]; then
+            echo "Deployment successful! Mock server is responding with status code 200."
+          else
+            echo "Error: Deployment verification failed with status code $HEALTH_CHECK"
+            docker compose logs
+            exit 1
+          fi
+          
+          echo "Deployment completed successfully!" 
